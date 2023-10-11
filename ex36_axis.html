@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{ margin-bottom: 300px;}
+
+        .table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        .table td {
+            border:  1px solid black;
+            padding: 30px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body> 
+    <!-- ex36_axis.html -->
+
+    <h1>테이블</h1>
+
+    <table class="table" id="tbl1" oncontextmenu="return false" onselectstart="return false"> <!-- 테이블 내용 드래그와 두번 클릭하면 선택되는거 막는 코드 -->
+        <!-- tr*5>td{0}*5 -->
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <h1>또 다른 테이블</h1>
+
+    <table class="table" id="tbl2">
+        <!-- tr*3>td{item}*3 -->
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+    </table>
+
+    <script>
+        
+        /* var list = document.getElementsByTagName('td');
+        alert(list.length); //34 */
+
+        var tbl1 = document.getElementById('tbl1');
+
+        /* //<table>의 자식 <tbody>
+        alert(tbl1.firstElementChild.children.length); */
+
+        var tr = tbl1.firstElementChild.children;
+
+        for (var i=0; i<tr.length; i++) { //행
+            var td = tr[i].children;
+            for (var j=0; j<td.length; j++) { //열
+                // td[j].bgColor = 'gold';
+
+                /* td[j].onmouseover = m1;
+                td[j].onmouseout = m2; */
+
+                td[j].onmousedown = m3;
+            }
+        }
+
+        function m1() {
+            event.target.bgColor = 'coral';
+        }
+
+        function m2() {
+            event.target.bgColor = 'transparent'; //투명
+        }
+
+        function m3() {
+            
+            var n = parseInt(event.target.textContent);
+
+            if(event.buttons == 1) {
+                n++;
+            } else if (event.buttons == 2) {
+                n--;
+            } else if (event.buttons == 4) {
+                n = 0;
+            }
+
+            event.target.textContent = n;
+        }
+
+        // var tbl2 = document.getElementById('tbl2');
+
+        var list2 = document.querySelectorAll('#tbl2 td'); /* td가 목적인 경우 간단하게 찾기(**) */
+
+        // alert(list2.length);
+
+        for (var i=0; i<list2.length; i++) {
+            list2[i].bgColor = 'cornflowerblue';
+        }
+
+    </script>
+
+</body>
+</html>

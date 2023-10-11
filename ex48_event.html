@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #tbl1 {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        #tbl1 td {
+            border: 1px solid black;
+            width: 126px;
+            height: 126px;
+            /* font-size: 0; */
+        }
+
+        #tbl1 td img {
+            display: block;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- ex48_event.html -->
+
+    <h1>테이블</h1>
+
+    <!-- table#tbl1>tr*3>td*3 -->
+    <table id="tbl1">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>
+        const list = document.querySelectorAll('#tbl1 td');
+
+        for (let i=0; i<list.length; i++) {
+
+            list[i].onmousedown = function() {
+
+                if (event.buttons == 1) {
+                    let img = document.createElement('img');
+                    img.setAttribute('src', '../asset/images/rect_icon01.png');
+                    event.target.appendChild(img);
+                } else if (event.buttons == 2) {
+                    let img = document.createElement('img');
+                    img.setAttribute('src', '../asset/images/rect_icon02.png');
+                    event.target.appendChild(img);
+                }
+
+            }
+
+        }
+
+        // <body oncontextmenu="return false;">
+        window.oncontextmenu = function() {
+            return false;
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- ex41_object.html -->
+
+    <script>
+        
+        /* 
+            객체, Object
+            - JavaScript에는 클래스가 없지만 내장 객체를 제공한다.
+
+            1. 내장 객체
+                - Array, Date, Math, Object 등
+                - new Array()
+                - new Date()
+                - Math.메소드()
+            
+            2. BOM 객체
+                - window, document, form, text, button 등
+            
+            3. DOM 객체
+                - element, attribute, text, comment 등
+
+            4. 사용자 정의 객체
+                - JavaScript에는 클래스가 없어서 근본적으로는 원하는 형태의 객체를 생성하지 못하지만 가능하게 만들어버림
+
+            배열 만들 때 
+            const list1 = new Array();
+            const list2 = [];
+            
+            사용자 정의 객체
+            1. Object 내장 객체를 사용
+                - const obj1 = new Object();
+                
+            2. {} > 객체 리터럴 표기법을 사용
+                - const obj2 = {};
+
+            
+            Java class 예제
+                class User { 
+                    public String name;
+                    public int age;
+                    public String address;
+                }
+
+                User hong = new User();
+                hong.name = "홍길동";
+                hong.age = 20;
+                hong.address = "서울시 강남구";            
+        */
+
+        const hong = new Object();
+        console.log(hong);
+
+        //** JavaScript의 모든 객체는 프로퍼티를 자유롭게 추가/삭제가 가능하다.
+        hong.name = '홍길동'; //객체의 프로퍼티(Property)
+
+        console.log(hong.name);
+        console.log(hong);
+
+        hong.age = 20;
+        hong.address = '서울시 강남구';
+
+        //{name: '홍길동', age: 20, address: '서울시 강남구'}
+        console.log(hong);
+        
+
+        //JavaScript의 프로퍼티 표기법
+        // 1. hong.tel > 멤버 표기
+        // 2. hong['tel'] > key 표기
+        hong.tel = '010-1234-5678';
+        hong['tel'] = '010-1234-5678';
+
+        let key = 'tel';
+        hong[key] = '010-5555-5555';
+
+        // hong.primary-phone = ''; //식별자 사이에 - 표기시엔 key표기가 적절함
+        hong['primary-phone'] = '010-1234-5678';
+
+
+        /* JavaScript 객체 만들기
+        1. 빈 객체를 만든다.
+        - new Object()
+        2. 원하는 프로퍼티를 추가한다.
+        - obj.name = '' */
+
+        const lee = new Object();
+
+        lee.name = '이순신';
+        lee.age = 25;
+        lee.addres = '서울시 강동구 천호동'; //오타발생, 사람이 관리 해야함
+
+        console.log(lee.name);
+        console.log(lee.age);
+        console.log(lee.address);
+        
+        // ----------------------------------------------------------
+        console.clear();
+        
+        /* const park = {}; //new Object();
+        
+        park.name = '박문수';
+        park.age = 40;
+        park.address = '한양'; */
+        
+        const park = {
+            name: '박문수',
+            age: 40,
+            address: '한양'
+        };
+        
+        console.log(park);
+        console.log(park.name);
+        console.log(park.age);
+        console.log(park.address);
+        
+        /* const you = {
+            name: '유재석',
+            age: 30,
+            
+            address: '서울시 강남구 압구정동'
+            
+            si: '서울시',
+            gu: '강남구',
+            dong: '압구정동'
+        }; */
+        
+        /* const address = {
+            si: '서울시',
+            gu: '강남구',
+            dong: '압구정동'
+        };
+        
+        const you = {
+            name: '유재석',
+            age: 30,
+            address: address
+        }; */
+        
+        
+        const you = {
+            name: '유재석',
+            age: 30,
+            address: address = {
+                si: '서울시',
+                gu: '강남구',
+                dong: '압구정동'
+            }
+        };
+        
+        console.log(you.name);
+        console.log(you.address);
+        console.log(you.address.dong);
+        
+        // ----------------------------------------------------------
+        console.clear();
+
+        const yang = {
+            name: '양세찬',
+            age: 25,
+            hello: m1
+        };
+
+        function m1() {
+            alert('안녕하세요.');
+        }
+
+        console.log(yang);
+
+        yang.hello(); //m1() 호출
+         
+    </script>
+    
+</body>
+</html>

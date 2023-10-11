@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box { padding: 50px; }
+        #p1 { background-color: lavender; }
+        #p2 { background-color: lightcyan; }
+        #p3 { background-color: #FFFF33; }
+    </style>
+</head>
+<body>
+    <!-- ex46_event.html -->
+
+    <div id="p1" class="box">
+        <div id="p2" class="box">
+            <div id="p3" class="box"></div>
+        </div>
+    </div>
+
+    <hr>
+
+    <input type="text" id="txt1">
+    
+    <hr>
+
+    <img src="../asset/images/catty02.png" id="cat1">
+
+    <script>
+        
+        //이벤트 버블링(Bubbling) vs [이벤트 터널링(Tunneling) == 이벤트 캡처링(Capturing)]
+
+        const p1 = document.getElementById('p1');
+        const p2 = document.getElementById('p2');
+        const p3 = document.getElementById('p3');
+        
+        /* document.getElementsByTagName('html')[0].onclick = function() {
+            alert('html');
+        }; */
+
+        /* document.getElementsByTagName('body')[0].onclick = function() {
+            alert('body');
+        }; */
+
+        /* p1.onclick = function() {
+            alert('연보라');
+            event.cancelBubble = true; //이벤트 버블링을 중단하는 코드
+        };
+        
+        p2.onclick = function() {
+            alert('연하늘');
+            event.cancelBubble = true; //이벤트 버블링을 중단하는 코드
+        };
+        
+        p3.onclick = function() {
+            alert('연노랑');
+            event.cancelBubble = true; //이벤트 버블링을 중단하는 코드
+        }; */
+
+        
+        //window의 키 이벤트는 모든 상황에서 늘 발생함
+        /* window.onkeydown = function() {
+            if (event.keyCode == 37) {
+                document.getElementById('cat1').width -= 10;
+            } else if (event.keyCode == 39) {
+                document.getElementById('cat1').width += 10;
+            } else if (event.keyCode == 65) {
+                location.href = 'https://google.com';
+            }
+        };
+
+        document.getElementById('txt1').onkeydown = function() {
+            event.cancelBubble = true;
+        }; */
+
+        
+        /* JavaScript 기본 동작: 이벤트 버블링
+        1. BOM 이벤트 - 이벤트 버블링
+        2. DOM 이벤트 - 이벤트 버블링/이벤트 터널링 선택 가능 */
+
+        // 이벤트 터널링: p1.addEventListener(type, function() {}, true)
+
+        /* //이벤트 터널링
+        p1.addEventListener('click', function () {
+            alert('연보라');
+        }, true);
+
+        p2.addEventListener('click', function () {
+            alert('연하늘');
+        }, true);
+
+        p3.addEventListener('click', function () {
+            alert('연노랑');
+        }, true); */
+
+        //이벤트 버블링
+        p1.addEventListener('click', function () {
+            alert('연보라');
+        });
+
+        p2.addEventListener('click', function () {
+            alert('연하늘');
+        });
+
+        p3.addEventListener('click', function () {
+            alert('연노랑');
+
+            event.cancelBubble = true;
+            event.stopPropagation(); //이벤트 전파 중지
+        });
+
+
+
+
+
+        
+    </script>
+    
+</body>
+</html>

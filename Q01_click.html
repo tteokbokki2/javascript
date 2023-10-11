@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        h1 {
+            color: #777;
+        }
+
+        div {
+            float: left;
+        }
+        
+        .txt {
+            display: block;
+        }
+        
+        
+        #form1 {
+            overflow: hidden;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- Q01_click.html -->
+    
+    <h1>데이터 입력</h1>
+
+    <form id="form1">
+        <div>이름 :</div> <input type="text" name="txt1" class="txt">
+        <div>나이 :</div> <input type="text" name="txt2" class="txt">
+        <div>별명 :</div> <input type="text" name="txt3" class="txt">
+        <input type="button" value="Long" name="btn1">
+        <input type="button" value="Short" name="btn2">
+    </form>
+
+    <script>
+        document.form1.btn1.onclick = m1;
+
+        function m1() {
+            // alert(m1);
+
+            document.form1.txt1.size = 50;
+            document.form1.txt2.size = 50;
+            document.form1.txt3.size = 50;
+        }
+
+        document.form1.btn2.onclick = m2;
+
+        function m2() {
+            // alert(m2);
+
+            document.form1.txt1.size = 20;
+            document.form1.txt2.size = 20;
+            document.form1.txt3.size = 20;
+        }
+    </script>
+
+</body>
+</html>

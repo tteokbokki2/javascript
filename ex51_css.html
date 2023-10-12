@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #box1{
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+        }
+
+        .one {font-size: 3rem;}
+        .two {color: cornflowerblue;}
+        .three {text-decoration: underline;}
+
+        body { margin-bottom: 300px; }
+
+    </style>
+    <script src="https://kit.fontawesome.com/b001d4dbad.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- ex51_css.html -->
+
+    <h1>CSS</h1>
+
+    <input type="button" value="버튼" id="btn1">
+    <hr>
+    <div id="box1">상자</div>
+
+    <hr>
+    
+    <h1>텍스트</h1>
+
+    <div class="tool">
+        <button type="button" id="btn2"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+        <button type="button" id="btn3"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+    </div>
+
+    <p id="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur fuga delectus porro nesciunt asperiores, labore quae natus distinctio ad quis minima illo similique suscipit eveniet. Eos optio deleniti hic suscipit tenetur, magnam eveniet accusamus, error placeat laboriosam sapiente ipsum necessitatibus quis itaque dolorem saepe sunt aliquam maiores. Sunt, vitae facilis, nihil exercitationem voluptate quasi corrupti molestias perferendis beatae error recusandae deserunt officiis, architecto explicabo molestiae perspiciatis iusto repellat aspernatur modi nemo hic ut! Nemo placeat similique autem maxime accusamus rerum itaque eius totam officia, voluptatem nisi, assumenda vitae libero in nihil aliquam aspernatur! Eaque quo consequatur similique maiores sapiente placeat quae blanditiis, vero nam ad non consectetur, dolores culpa qui nulla iste voluptates delectus error. Ex ea nulla nobis repudiandae! Ipsum atque harum impedit quidem nisi sapiente porro inventore, reiciendis officiis aperiam commodi quia nemo beatae repellendus tempore soluta, assumenda dolorum! Quae facere voluptates alias ab optio, dolore repellat nostrum odio numquam, neque, expedita vitae molestiae odit blanditiis. Dolore ipsa velit recusandae repudiandae, qui aliquid perspiciatis assumenda libero omnis non quibusdam voluptate soluta ratione error fugit optio illo blanditiis quas nam eligendi autem mollitia? Sint tempore perferendis earum vero alias fuga voluptatem exercitationem hic itaque corporis, reiciendis nam quo enim. Earum fuga aperiam vero laborum doloremque provident, in debitis, praesentium accusamus cum dolorem ex perspiciatis nulla harum, a dolore nam et animi saepe ducimus. Ullam aspernatur quo deleniti incidunt officia libero laborum officiis eveniet est vero nemo alias qui eius recusandae, earum animi aliquam similique omnis inventore aperiam rerum sint! At, doloremque magni consequatur ducimus qui perferendis quisquam nam id minima voluptatem quis, nulla optio ipsum nostrum praesentium! Animi, dignissimos officiis, molestias eveniet a nam optio magnam temporibus ratione perspiciatis impedit vitae officia exercitationem eius commodi excepturi ut sapiente tempora alias praesentium ipsa sequi maxime nulla soluta. Atque, quasi fugit.</p>
+
+    <script>
+        const btn1 = document.getElementById('btn1');
+        const box1 = document.getElementById('box1');
+
+        btn1.addEventListener('click', function() {
+
+            /* 
+                JavaScript로 CSS 조작
+                1. 모든 태그는 style 속성 제공(인라인 스타일 시트) > 자바스크립트 style 프로퍼티 제공
+                2. class 조작
+                    - className 프로퍼티
+                    - ClassList 프로퍼티
+            */
+            
+            // btn1.value = 'Button';
+            // box1.style = 'color: blue'; //BOM
+            // box1.setAttribute('style', 'color:gold'); //DOM
+            
+            /* //조직적인 관리 어려움
+            box1.innerHTML = '<input>'
+            box1.style = 'color: blue; font-size: 2rem'; */
+
+            //style 프로퍼티 > 접근 가능 속성 > 프로퍼티(배열) 제공
+            // box1.style = 'color: blue';
+            // box1.style.color = 'blue';
+            // box1.style.fontSize = '2rem'
+            // box1.style.backgroundColor = 'lavender';
+
+            // box1.style['color'] = 'coral';
+            // box1.style['font-size'] = '2rem';
+            // box1.style['background-image'] = 'url(../asset/images/catty02.png)';
+
+
+            //상자의 현재 너비 확인
+            // alert(box1.style.width); //읽기 - null(인라인시트 안의 값만 읽음)
+            
+            /* box1.style.width = '300px' //쓰기
+            alert(box1.style.width); //읽기 - 300px(인라인시트 안의 값만 읽음) */
+
+
+            // 버튼 클릭 > 상자의 너비 > 현재 너비 + 50px
+            // box1.style.width = parseInt(box1.style.width) + 50 + 'px';
+
+            //CSS 적용 방식 무관 > 현재 객체에 적용된 모든 CSS 속성을 반환
+            const list = window.getComputedStyle(box1);
+
+            // alert(box1.style.width); //null, 이게 안돼서 아래 두개 코드로 확인
+            // alert(list.width);
+            // alert(list.getPropertyValue('width'));
+        });
+
+
+        const btn2 = document.getElementById('btn2');
+        const btn3 = document.getElementById('btn3');
+        const content = document.getElementById('content');
+
+        let size = 16;
+
+        btn2.addEventListener('click', function () {
+            // size--;
+            // content.style.fontSize = size + 'px';
+
+
+            //<p class="one two">
+            // content.className = 'one two';
+
+            //2개 이상의 클래스를 넣고 싶을 때는 classList활용
+            content.classList.add('one');
+            content.classList.add('two');
+            });
+            
+            btn3.addEventListener('click', function () {
+            // size++;
+            // content.style.fontSize = size + 'px';
+                
+            //<p class="one twothree">
+            //<p class="one two three">
+            // content.className += ' three';
+            
+            content.classList.add('three');
+            content.classList.remove('two');
+        });
+
+    </script>
+
+
+</body>
+</html>
